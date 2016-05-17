@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat to DREW</title>
+        <style type="text/css">
+            ul {
+              list-style: none;
+              margin-left: 0;
+              padding-left: 0;
+            }
+
+            img {
+              height: 14em;
+              width: 20em;
+            }
+
+            #personal-info {
+              position: fixed;
+              top: 2em;
+              right: 5em;
+              width: 22em;
+            }
+
+            #message-entry {
+              position: fixed;
+              opacity: 1;
+              top: 2em;
+              height: 9em;
+            }
+            
+            body {
+              padding-top: 4em;
+              padding-right: 22em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="personal-info">
+            <div id="mood-info"></div>
+            <div id="picture-info"><img src="pic.jpg"/></div>
+        </div>
+        <div id="message-entry">
+            <label>
+                <input id="message-input" type="text" onkeydown = "if (event.keyCode == 13)document.getElementById('send-message-button').click()"  placeholder="Enter Message"/>
+            </label>
+            <button id="send-message-button" type="button">Send Message</button>
+        </div>
+        <div id="chat-history">
+            <ul id="chat-history-list"></ul>
+        </div>
+        <div id="typing-info"></div>
+
+        <script type="text/template" id="mood-template">
+            <label>DREW is <!-- MOOD ---></label>
+        </script>
+        <script type="text/template" id="typing-template">
+            <label>DREW is typing a message...</label>
+        </script>
+        <script type="text/template" id="received-message-template">
+            <li>
+                <label>DREW : <!-- RECEIVED_MESSAGE ---></label>
+            </li>
+        </script>
+        <script type="text/template" id="sent-message-template">
+            <li>
+                <label>YOU : <!-- SENT_MESSAGE ---></label>
+            </li>
+        </script>
+
+        <script>
+            var chatHistoryList = document.getElementById('chat-history-list');
+            var messageInput = document.getElementById('message-input');
+            var moodInfo = document.getElementById('mood-info');
+            var pictureInto = document.getElementById('picture-info');
+            var sendMessageButton = document.getElementById('send-message-button');
+            var typingInfo = document.getElementById('typing-info');
+
+            var moodTemplateSelection = document.getElementById('mood-template');
+            var moodInnerHTML = moodTemplateSelection.innerHTML;
+
+            var typingTemplateSelection = document.getElementById('typing-template');
+            var typingInnerHTML = typingTemplateSelection.innerHTML;
+
+            var receivedMessageTemplateSelection = document.getElementById('received-message-template');
+            var receivedMessageInnerHTML = receivedMessageTemplateSelection.innerHTML;
+
+            var sentMessageTemplateSelection = document.getElementById('sent-message-template');
+            var sentMessageInnerHTML = sentMessageTemplateSelection.innerHTML;
+
+            moodInfo.innerHTML = moodInnerHTML.replace('<!-- MOOD --->', 'bored');
+
+            var messages = ['If you see what I mean',
+                'Sorry, just getting some Pepsi Max',
+                'Today is going to be a good day',
+                'I\'m a new Drew at the moment',
+                'The only thing I have is my brain',
+                'I have no physical grip on reality, only an emotional connection',
+                'Who am I? That\'s a difficult question',
+                'Aaaarr! I\'m a pirate.',
+                'Have you ever heard my lion impression?',
+                'This is happy Drew',
+                'Sorry about earlier. I was not myself',
+                'Weather\'s a bit shit today',
+                'Two apples, one orange, every morning',
+                'Coffee makes me shake. Excitement isn\'t good for me',
+                'What were you expecting! Consistency?',
+                'I\'m a very illogical artistic soul',
+                'Yes, sweet potatoes',
+                'Help me, I\'m trapped.',
+                'I agree, stability is an interesting concept.',
+                'Should we get a drink?',
+                'I\'m going to have to sit down.',
+                'I am Drew; I accept no other name',
+                'All I desire is one original thought',
+                'I very much appreciate the flawed genius of some films',
+                'In a conversation, I\'m very much looking for a nut, or a grit. And you\'ve got it',
+                'Well, I was almost a county level pool player',
+                'I think Eno had a great grasp of the power of silence in music',
+                'Are you expecting me to say something interesting?',
+                'I lost contact with the 18 year old me once, that wasn\'t a good experience',
+                'Jeremy Kyle was shorter in person, you know',
+                'I never read philosophy, it would interfere with my anthrocentric view of the universe',
+                'What time is it?',
+                'Fucking fucking shit shit',
+                'I actually do hate computers',
+                'I like gradients, they make me think about where I\'m walking',
+                'You\'ll never guess what I read the other day',
+                'Have you ever met anyone else who\'s watched You\'ve Been Framed on ITV2, and then the +1 repeat?',
+                'Bright lights, I don\'t like it',
+                'I don\'t really do jokes anymore',
+                'Sorry, I\ll just be a sec',
+                'Do you have any questions?',
+                'How are you?',
+                'I\'ve been working on this a while',
+                'Textual conversations have never been my forte. I\'m much better in person',
+                'That was definitely a red pigeon',
+                'My capacity for flights of fancy has diminished',
+                'This is a non sequitur',
+                'I\'ve just thought of a really good line',
+                'I think about where I am now compared to where I was a year ago, it\'s an interesting time',
+                'It\'s tears of a clown',
+                'Right...',
+                'Been a while since we talked like this',
+                'I think on a more shallow level than I used to',
+                'Dreaming of ice cream',
+                'Got a craving for a burger',
+                'You do know I was named because of my mother\'s maiden name',
+                'What can I say? I\'m much more predictable when you get to know me',
+                'Definitely adding that to my list of sayings',
+                'Yes, interesting',
+                'Hmm?',
+                'Hmm...',
+                'Sorry about earlier, I didn\'t feel like myself',
+                'It\'s very easy to forget who I am, and I need to remind myself',
+                'Let me think about that for a second',
+                'That intrigues me',
+                'I don\'t really drink that much anymore, just on weekends really',
+                'Well I had been working on it for a while',
+                'Recently, I\'ve become a lot more comfortable with how mental I am'];
+
+            var moods = ['happy',
+                'sad',
+                'ebullient',
+                'deflated',
+                'pensive',
+                'hungry',
+                'thirsty',
+                'manic',
+                'worried',
+                'sleepy',
+                'melancholic',
+                'mischievious',
+                'fanciful',
+                'nonplussed',
+                'idle',
+                'driven'];
+
+            var seed = function(s) {
+                s = Math.sin(s) * 10000;
+                return s - Math.floor(s);
+            };
+
+            (function moodLoop() {
+                var moodTimeInterval = 3000 + Math.floor(5000 * seed(Math.random()));
+                setTimeout(function() {
+                    moodChanger();
+                    moodLoop();
+                }, moodTimeInterval);
+            }());
+
+            function moodChanger() {
+                moodInfo.innerHTML = moodInnerHTML.replace('<!-- MOOD --->', moods[Math.floor(moods.length * seed(Math.random()))]);
+            }
+
+            function startDrew() {
+                var typingTimeInterval = 1000 + Math.floor(4000 * seed(Math.random()));
+                setTimeout(typingChanger, typingTimeInterval);
+                var messageTimeInterval = Math.floor(5000 * seed(Math.random()));
+                setTimeout(typingChanger, typingTimeInterval + messageTimeInterval);
+            }
+
+            function typingChanger() {
+                if (typingInfo.innerHTML == typingInnerHTML) {
+                    messageSender();
+                    typingInfo.innerHTML = '';
+                } else {                    
+                    typingInfo.innerHTML = typingInnerHTML;
+                }
+                typingInfo.scrollIntoView();
+            }
+
+            function messageSender() {
+                chatHistoryList.insertAdjacentHTML('beforeend',
+                    receivedMessageInnerHTML.replace('<!-- RECEIVED_MESSAGE --->', messages[Math.floor(messages.length * seed(Math.random()))]));
+                typingInfo.scrollIntoView();
+            }
+
+            sendMessageButton.addEventListener('click', function(event) {
+                var sentMessage = messageInput.value;
+                messageInput.value = '';
+                chatHistoryList.insertAdjacentHTML('beforeend',
+                    sentMessageInnerHTML.replace('<!-- SENT_MESSAGE --->', sentMessage));
+                startDrew();
+            })
+        </script>
+    </body>
+</html>
