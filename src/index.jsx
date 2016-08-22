@@ -19,8 +19,12 @@ const store = createStoreDevTools(reducer);
 store.dispatch({
     type: actions.SET_STATE,
     state: {
-        messageHistory: [],
-        mood: 'pondering'
+        messageHistory: [
+            {id: 1, drewSaid: true, text: 'hey'},
+            {id: 2, drewSaid: false, text: 'test'}
+        ],
+        mood: 'pondering',
+        typingInfo: {waitTime: 1000, typeTime: 1000, typing: false, running: true}
     }
 })
 
