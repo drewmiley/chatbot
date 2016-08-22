@@ -20,7 +20,7 @@ store.dispatch({
     type: actions.SET_STATE,
     state: {
         messageHistory: [],
-        mood: 'unimplemented'
+        mood: 'pondering'
     }
 })
 

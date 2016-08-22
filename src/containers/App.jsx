@@ -1,12 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import * as config from '../config';
+
 import * as actionCreators from '../actions/chat';
 
 import PersonalInfo from '../components/PersonalInfo';
 
 export default class App extends React.Component {
     componentDidMount() {
+        if (config.moodFeed) {
+            config.moodFeed(this.props.setMood);
+        }
         console.log('ready for logic');
     }
     render() {
