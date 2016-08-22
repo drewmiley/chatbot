@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import * as actionCreators from '../actions/chat';
 
+import PersonalInfo from '../components/PersonalInfo';
+
 export default class App extends React.Component {
     componentDidMount() {
         console.log('ready for logic');
@@ -11,6 +13,7 @@ export default class App extends React.Component {
         return <div>
             <section className="chatbot-app-container">
                 Hello Drew
+                <PersonalInfo mood={this.props.mood} />
             </section>
         </div>
     }
