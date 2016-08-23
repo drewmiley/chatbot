@@ -9,6 +9,24 @@ export function messageSelector(setMessageSelector) {
     messageSelector = setMessageSelector;
 }
 
+let waitTime = null;
+
+export function waitTime(setWaitTime) {
+    if (!setWaitTime) {
+        return waitTime;
+    }
+    waitTime = setWaitTime;
+}
+
+let typeTime = null;
+
+export function typeTime(setTypeTime) {
+    if (!setTypeTime) {
+        return typeTime;
+    }
+    typeTime = setTypeTime;
+}
+
 export function setMood(mood) {
     return {
         type: actions.SET_MOOD,
@@ -27,5 +45,16 @@ export function drewSendsMessage(messageHistory) {
 export function drewStartsTyping() {
     return {
         type: actions.DREW_STARTS_TYPING
+    }
+}
+
+export function userSendsMessage(message) {
+    const drewWaitTime = waitTime ? waitTime() : null;
+    const drewTypeTime = typeTime ? typeTime() : null;
+    return {
+        type: actions.USER_SENDS_MESSAGE,
+        message,
+        drewWaitTime,
+        drewTypeTime
     }
 }

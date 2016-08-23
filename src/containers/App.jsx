@@ -8,6 +8,7 @@ import * as actionCreators from '../actions/chat';
 import MessageHistory from '../components/MessageHistory';
 import PersonalInfo from '../components/PersonalInfo';
 import TypingInfo from '../components/TypingInfo';
+import UserMessageInput from '../components/UserMessageInput';
 
 export default class App extends React.Component {
     componentDidMount() {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
         return <div>
             <section className="chatbot-app-container">
                 <PersonalInfo mood={this.props.mood} />
+                <UserMessageInput {...this.props} />
                 <MessageHistory messageHistory={this.props.messageHistory} />
                 <TypingInfo
                     messageHistory={this.props.messageHistory}
@@ -30,6 +32,8 @@ export default class App extends React.Component {
 };
 
 actionCreators.messageSelector(config.messageSelector);
+actionCreators.waitTime(config.waitTime);
+actionCreators.typeTime(config.typeTime);
 
 function mapStateToProps(state) {
     return {

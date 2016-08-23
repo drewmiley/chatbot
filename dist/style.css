@@ -16,7 +16,7 @@ img {
   width: 22em;
 }
 
-.chatbot-message-entry {
+.chatbot-user-message-input {
   position: fixed;
   opacity: 1;
   top: 2em;

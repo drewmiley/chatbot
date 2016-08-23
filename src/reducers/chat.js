@@ -2,6 +2,8 @@ import {List, Map} from 'immutable';
 
 import * as actions from '../constants/actions';
 
+import TypingInfo from '../object/TypingInfo';
+
 function getNextID(state, accessor, initialValue) {
     let nextId = initialValue === parseInt(initialValue, 10) ? initialValue : 0;
     if (state.get(accessor).size > 0 && nextId <= state.get(accessor).map(item => item.get('id')).max()) {
@@ -45,6 +47,22 @@ function startDrewTyping(state) {
     return state.update('typingInfo', typingInfo => typingInfo.set('typing', true));
 }
 
+function receiveUsersMessage(state, usersMessage, drewWaitTime, drewTypeTime) {
+    if (!usersMessage || !drewWaitTime || !drewTypeTime) {
+        return state;
+    }
+
+    const nextId = getNextID(state, 'messageHistory');
+    const message = { 
+        id: nextId,
+        drewSaid: false,
+        text: usersMessage
+    }
+
+    return state.update('messageHistory', messageHistory => messageHistory.push(Map(message)))
+        .set('typingInfo', new TypingInfo(drewWaitTime, drewTypeTime, false, true, true));
+}
+
 export default function(state = Map(), action) {
     switch (action.type) {
         case actions.SET_STATE:
@@ -55,6 +73,8 @@ export default function(state = Map(), action) {
             return receiveDrewsMessage(state, action.message);
         case actions.DREW_STARTS_TYPING:
             return startDrewTyping(state);
+        case actions.USER_SENDS_MESSAGE:
+            return receiveUsersMessage(state, action.message, action.drewWaitTime, action.drewTypeTime);
         default:
             return state;
     }
