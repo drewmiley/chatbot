@@ -24,7 +24,7 @@ export default class App extends React.Component {
                 <MessageHistory messageHistory={this.props.messageHistory} />
                 <TypingInfo
                     messageHistory={this.props.messageHistory}
-                    typingInfo={this.props.typingInfo}
+                    typingState={this.props.typingState}
                     {...this.props} />
             </section>
         </div>
@@ -39,7 +39,7 @@ function mapStateToProps(state) {
     return {
         messageHistory: state.get('messageHistory'),
         mood: state.get('mood'),
-        typingInfo: state.get('typingInfo')
+        typingState: state.get('typingState')
     };
 }
 

@@ -2,8 +2,6 @@ import {List, Map} from 'immutable';
 
 import * as actions from '../constants/actions';
 
-import TypingInfo from '../object/TypingInfo';
-
 function getNextID(state, accessor, initialValue) {
     let nextId = initialValue === parseInt(initialValue, 10) ? initialValue : 0;
     if (state.get(accessor).size > 0 && nextId <= state.get(accessor).map(item => item.get('id')).max()) {
@@ -40,11 +38,11 @@ function receiveDrewsMessage(state, drewsMessage) {
         text: drewsMessage
     }
     return state.update('messageHistory', messageHistory => messageHistory.push(Map(message)))
-        .update('typingInfo', typingInfo => typingInfo.set('typing', false).set('running', false));
+        .update('typingState', typingState => typingState.set('typing', false).set('running', false));
 }
 
 function startDrewTyping(state) {
-    return state.update('typingInfo', typingInfo => typingInfo.set('typing', true));
+    return state.update('typingState', typingState => typingState.set('typing', true));
 }
 
 function receiveUsersMessage(state, usersMessage, drewWaitTime, drewTypeTime) {
@@ -59,8 +57,15 @@ function receiveUsersMessage(state, usersMessage, drewWaitTime, drewTypeTime) {
         text: usersMessage
     }
 
+    const typingState = Map({
+        waitTime: drewWaitTime,
+        typeTime: drewTypeTime,
+        typing: false,
+        running: true
+    })
+
     return state.update('messageHistory', messageHistory => messageHistory.push(Map(message)))
-        .set('typingInfo', new TypingInfo(drewWaitTime, drewTypeTime, false, true, true));
+        .set('typingState', typingState);
 }
 
 export default function(state = Map(), action) {
