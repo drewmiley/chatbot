@@ -7,7 +7,7 @@ export default class MoodLabel extends React.Component {
     }
     render() {
         return <div className='chatbot-mood-label'>
-            <label>Drew is {this.props.mood}</label>
+            <label>DREW is {this.props.mood}</label>
         </div>
     }
 };

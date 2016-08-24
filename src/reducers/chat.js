@@ -32,12 +32,12 @@ function receiveDrewsMessage(state, drewsMessage) {
     }
 
     const nextId = getNextID(state, 'messageHistory');
-    const message = { 
+    const message = Map({ 
         id: nextId,
         drewSaid: true,
         text: drewsMessage
-    }
-    return state.update('messageHistory', messageHistory => messageHistory.push(Map(message)))
+    })
+    return state.update('messageHistory', messageHistory => messageHistory.push(message))
         .update('typingState', typingState => typingState.set('typing', false).set('running', false));
 }
 
