@@ -6,5 +6,5 @@ export default function RandomMessageSelector() {
         return s - Math.floor(s);
     };
 
-    return messages[Math.floor(messages.length * seed(Math.random()))];
+    return messages.get(Math.floor(messages.size * seed(Math.random())));
 }

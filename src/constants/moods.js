@@ -1,4 +1,6 @@
-const moods = ['happy',
+import {List} from 'immutable';
+
+const moods = List.of('happy',
     'sad',
     'ebullient',
     'deflated',
@@ -13,6 +15,6 @@ const moods = ['happy',
     'fanciful',
     'nonplussed',
     'idle',
-    'driven'];
+    'driven');
 
 export default moods;

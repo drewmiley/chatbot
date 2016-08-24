@@ -1,4 +1,6 @@
-const messages = ['If you see what I mean',
+import {List} from 'immutable';
+
+const messages = List.of('If you see what I mean',
     'Sorry, just getting some Pepsi Max',
     'Today is going to be a good day',
     'I\'m a new Drew at the moment',
@@ -65,6 +67,6 @@ const messages = ['If you see what I mean',
     'That intrigues me',
     'I don\'t really drink that much anymore, just on weekends really',
     'Well I had been working on it for a while',
-    'Recently, I\'ve become a lot more comfortable with how mental I am'];
+    'Recently, I\'ve become a lot more comfortable with how mental I am');
 
 export default messages;

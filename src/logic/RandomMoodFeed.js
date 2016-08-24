@@ -7,7 +7,7 @@ export default function RandomMoodFeed(action) {
     };
 
     const moodChanger = (action) => {
-        const mood = moods[Math.floor(moods.length * seed(Math.random()))];
+        const mood = moods.get(Math.floor(moods.size * seed(Math.random())));
         action(mood);
     }
 
