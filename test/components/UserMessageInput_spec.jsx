@@ -82,4 +82,27 @@ describe('UserMessageInput', () => {
 
     });
 
+    describe('Text Entry', () => {
+
+        let input;
+        let value;
+
+        beforeEach(() => {
+            value = 'test'
+
+            component = renderIntoDocument(
+                <UserMessageInput />
+            );
+
+            input = scryRenderedDOMComponentsWithTag(component, 'input');
+
+            input[0].value = value;
+            Simulate.change(input[0]);
+        });
+
+        it('should add text to the input box', () => {
+            expect(input[0].value).to.equal(value);
+        });
+    });
+
 });
