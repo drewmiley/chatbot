@@ -22,11 +22,10 @@ npm test
 
 To deploy the app to gh-pages, there are a couple of steps to follow.
 
-1. Uncomment the img src in PersonalInfo.jsx
-2. Run `webpack` command. This will create a `bundle.js` and `bundle.js.map` file in the dist folder.
-3. Delete everything except dist folder.
-4. Empty contents of dist folder to root directory.
-5. Commit and push to gh-pages.
+1. Run `webpack` command. This will create a `bundle.js` and `bundle.js.map` file in the dist folder.
+2. Delete everything except dist folder.
+3. Empty contents of dist folder to root directory.
+4. Commit and push to gh-pages.
 
 ## Folder structure
     
@@ -43,17 +42,20 @@ To deploy the app to gh-pages, there are a couple of steps to follow.
     +-- constants
     |   +-- actions.js
     |   +-- bio.js
+    |   +-- conjunctions.js
     |   +-- messages.js
     |   +-- moods.js
+    |   +-- pictures.js
     +-- containers
     |   +-- App.jsx
     +-- logic
     |   +-- RandomBioGenerator.js
     |   +-- RandomMessageSelector.js
     |   +-- RandomMoodFeed.js
+    |   +-- RandomPictureLocation.js
     |   +-- RandomTime.js
     +-- reducers
-    |   +-- matcher.js
+    |   +-- chat.js
     +-- config.js
     +-- index.jsx
 
@@ -63,4 +65,4 @@ Currently, there are tests on each of the files within the components, logic, an
 
 ## Custom implementation
 
-Defaulted implementations are held in the logic folder. Currently, it utilises a fairly idiosyncratic algorithm. Bio, mood, and message statements are found in the constants folder.
+Defaulted implementations are held in the logic folder. Currently, it utilises a fairly idiosyncratic algorithm. Bio, conjunction, mood, and message statements, and picture locations are found in the constants folder.
