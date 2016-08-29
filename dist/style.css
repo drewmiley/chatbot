@@ -1,6 +1,6 @@
 img {
-  height: 14em;
-  width: 20em;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 body {

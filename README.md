@@ -33,6 +33,7 @@ To deploy the app to gh-pages, there are a couple of steps to follow.
     +-- actions
     |   +-- chat.js
     +-- components
+    |   +-- Bio.jsx
     |   +-- MessageHistory.jsx
     |   +-- MessageView.jsx
     |   +-- MoodLabel.jsx
@@ -41,11 +42,13 @@ To deploy the app to gh-pages, there are a couple of steps to follow.
     |   +-- UserMessageInput.jsx
     +-- constants
     |   +-- actions.js
+    |   +-- bio.js
     |   +-- messages.js
     |   +-- moods.js
     +-- containers
     |   +-- App.jsx
     +-- logic
+    |   +-- RandomBioGenerator.js
     |   +-- RandomMessageSelector.js
     |   +-- RandomMoodFeed.js
     |   +-- RandomTime.js
@@ -60,4 +63,4 @@ Currently, there are tests on each of the files within the components, logic, an
 
 ## Custom implementation
 
-Defaulted implementations are held in the logic folder. Currently, it utilises a fairly idiosyncratic algorithm. Currently, mood and message values are found in the constants folder.
+Defaulted implementations are held in the logic folder. Currently, it utilises a fairly idiosyncratic algorithm. Bio, mood, and message statements are found in the constants folder.

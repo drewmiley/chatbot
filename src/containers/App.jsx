@@ -28,7 +28,9 @@ export default class App extends React.Component {
                         {...this.props} />
                 </div>
                 <div className='col-xs-6 col-sm-4 col-md-3'>
-                    <PersonalInfo mood={this.props.mood} />
+                    <PersonalInfo
+                        bio={this.props.bio}
+                        mood={this.props.mood} />
                 </div>
             </section>
         </div>
@@ -38,9 +40,11 @@ export default class App extends React.Component {
 actionCreators.messageSelector(config.messageSelector);
 actionCreators.waitTime(config.waitTime);
 actionCreators.typeTime(config.typeTime);
+const bio = config.bio();
 
 function mapStateToProps(state) {
     return {
+        bio,
         messageHistory: state.get('messageHistory'),
         mood: state.get('mood'),
         typingState: state.get('typingState')
