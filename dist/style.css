@@ -1,29 +1,8 @@
-ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
 img {
   height: 14em;
   width: 20em;
 }
 
-.chatbot-personal-info {
-  position: fixed;
-  top: 2em;
-  right: 5em;
-  width: 22em;
-}
-
-.chatbot-user-message-input {
-  position: fixed;
-  opacity: 1;
-  top: 2em;
-  height: 9em;
-}
-
 body {
   padding-top: 4em;
-  padding-right: 22em;
 }

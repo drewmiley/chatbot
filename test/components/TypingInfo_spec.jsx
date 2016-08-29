@@ -32,9 +32,9 @@ describe('TypingInfo', () => {
                 <TypingInfo typingState={typingState}/>
             );
           
-            const label = scryRenderedDOMComponentsWithTag(component, 'label');
+            const heading = scryRenderedDOMComponentsWithTag(component, 'h4');
 
-            expect(label[0].textContent).to.equal('DREW is typing a message...');
+            expect(heading[0].textContent).to.equal('DREW is typing a message...');
         });
 
     });

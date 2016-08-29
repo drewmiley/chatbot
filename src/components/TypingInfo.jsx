@@ -28,7 +28,7 @@ export default class typingState extends React.Component {
     render() {
         if (this.props.typingState.get('typing')) {        
             return <div className='chatbot-typing-info'>
-                <label>DREW is typing a message...</label>
+                <h4><span className='label label-info'>DREW is typing a message...</span></h4>
             </div>
         } else {
             return <div className='chatbot-typing-info'></div>

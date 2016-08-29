@@ -10,10 +10,10 @@ export default class PersonalInfo extends React.Component {
         };
     }
     render() {
-        return <div className="chatbot-personal-info">
+        return <div className='chatbot-personal-info'>
             <MoodLabel mood={this.props.mood} />
-            <div id="chatbot-picture">
-                {/*<img src="./images/pic.JPG"/>*/}
+            <div id='chatbot-picture panel panel-default'>
+                {<img src='./images/pic.JPG'/>}
             </div>
         </div>
     }

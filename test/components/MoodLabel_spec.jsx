@@ -20,16 +20,16 @@ describe('MoodLabel', () => {
             );            
         })
 
-        it('should be a label', () => {
-            const label = scryRenderedDOMComponentsWithTag(component, 'label');
+        it('should be a h4 heading', () => {
+            const heading = scryRenderedDOMComponentsWithTag(component, 'h4');
 
-            expect(label.length).to.equal(1);
+            expect(heading.length).to.equal(1);
         });
 
         it('should display the text DREW is followed by the mood property value', () => {
-            const label = scryRenderedDOMComponentsWithTag(component, 'label');
+            const heading = scryRenderedDOMComponentsWithTag(component, 'h4');
 
-            expect(label[0].textContent).to.equal('DREW is ' + mood);
+            expect(heading[0].textContent).to.equal('DREW is ' + mood);
         });
 
     });

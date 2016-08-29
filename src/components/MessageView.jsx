@@ -6,8 +6,14 @@ export default class MessageView extends React.Component {
         this.shouldComponentUpdate = false;
     }
     render() {
-        return <li className='chatbot-message-view'>
-            <label>{this.props.drewSaid ? 'DREW' : 'YOU'} : {this.props.text}</label>
-        </li>
+        if (this.props.drewSaid) {        
+            return <li className='chatbot-message-view list-group-item'>
+                <span className='label label-primary'>DREW :</span> {this.props.text}
+            </li>
+        } else {
+            return <li className='chatbot-message-view list-group-item'>
+                <span className='label label-success'>YOU :</span> {this.props.text}
+            </li>
+        }
     }
 };

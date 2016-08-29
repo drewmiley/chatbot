@@ -10,8 +10,8 @@ export default class MessageHistory extends React.Component {
         };
     }
     render() {
-        return <div className="chatbot-message-history">
-            <ul>
+        return <div className='chatbot-message-history'>
+            <ul className='list-group'>
                 {this.props.messageHistory.map(message =>
                     <MessageView key={message.get('id')}
                         drewSaid={message.get('drewSaid')}

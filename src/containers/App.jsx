@@ -17,15 +17,19 @@ export default class App extends React.Component {
         }
     }
     render() {
-        return <div>
-            <section className="chatbot-app-container">
-                <PersonalInfo mood={this.props.mood} />
-                <UserMessageInput {...this.props} />
-                <MessageHistory messageHistory={this.props.messageHistory} />
-                <TypingInfo
-                    messageHistory={this.props.messageHistory}
-                    typingState={this.props.typingState}
-                    {...this.props} />
+        return <div className='container'>
+            <section className='chatbot-app-container'>
+                <div className='col-xs-6 col-sm-8 col-md-9'>
+                    <UserMessageInput {...this.props} />
+                    <MessageHistory messageHistory={this.props.messageHistory} />
+                    <TypingInfo
+                        messageHistory={this.props.messageHistory}
+                        typingState={this.props.typingState}
+                        {...this.props} />
+                </div>
+                <div className='col-xs-6 col-sm-4 col-md-3'>
+                    <PersonalInfo mood={this.props.mood} />
+                </div>
             </section>
         </div>
     }

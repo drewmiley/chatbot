@@ -31,9 +31,9 @@ describe('MessageView', () => {
                 <MessageView drewSaid={false} text={text} />
             );
 
-            const messageViewLabel = scryRenderedDOMComponentsWithTag(component, 'label');
+            const messageView = scryRenderedDOMComponentsWithTag(component, 'li');
 
-            expect(messageViewLabel[0].textContent).to.equal('YOU : ' + text);
+            expect(messageView[0].textContent).to.equal('YOU : ' + text);
         });
 
         it('renders Drew\'s message as DREW : followed by his message', () => {
@@ -41,9 +41,9 @@ describe('MessageView', () => {
                 <MessageView drewSaid={true} text={text} />
             );
 
-            const messageViewLabel = scryRenderedDOMComponentsWithTag(component, 'label');
+            const messageView = scryRenderedDOMComponentsWithTag(component, 'li');
 
-            expect(messageViewLabel[0].textContent).to.equal('DREW : ' + text);
+            expect(messageView[0].textContent).to.equal('DREW : ' + text);
         });
 
     });
