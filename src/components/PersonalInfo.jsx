@@ -16,7 +16,7 @@ export default class PersonalInfo extends React.Component {
                 <MoodLabel mood={this.props.mood} />
             </div>
             <div className='chatbot-picture panel-body'>
-                {<img src='./images/pic.JPG'/>}
+                <img src={this.props.pictureLocation}/>
             </div>
             <div className='panel-footer'>
                 <Bio bio={this.props.bio} />

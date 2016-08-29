@@ -1,5 +1,4 @@
 import {assert, expect} from 'chai';
-import {Map} from 'immutable';
 
 import RandomBioGenerator from '../../src/logic/RandomBioGenerator';
 

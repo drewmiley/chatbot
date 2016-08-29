@@ -1,5 +1,4 @@
 import {assert, expect} from 'chai';
-import {Map} from 'immutable';
 
 import RandomMessageSelector from '../../src/logic/RandomMessageSelector';
 
