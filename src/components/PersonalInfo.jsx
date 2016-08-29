@@ -13,7 +13,7 @@ export default class PersonalInfo extends React.Component {
         return <div className="chatbot-personal-info">
             <MoodLabel mood={this.props.mood} />
             <div id="chatbot-picture">
-                {/*<img src="./pic.JPG"/>*/}
+                {/*<img src="./images/pic.JPG"/>*/}
             </div>
         </div>
     }

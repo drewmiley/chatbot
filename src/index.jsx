@@ -19,10 +19,7 @@ const store = createStoreDevTools(reducer);
 store.dispatch({
     type: actions.SET_STATE,
     state: {
-        messageHistory: List.of(
-            Map({id: 1, drewSaid: true, text: 'hey'}),
-            Map({id: 2, drewSaid: false, text: 'test'})
-        ),
+        messageHistory: List.of(),
         mood: 'pondering',
         typingState: Map({waitTime: 1000, typeTime: 1000, typing: false, running: true})
     }
