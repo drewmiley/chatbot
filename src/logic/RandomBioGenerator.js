@@ -7,12 +7,30 @@ export default function RandomBioGenerator() {
         return s - Math.floor(s);
     };
 
+    let randomIndex;
+
+    let generatedBioIndices = [];
+    while (generatedBioIndices.length < 3) {
+        randomIndex = Math.floor(bio.size * seed(Math.random()));
+        if (generatedBioIndices.indexOf(randomIndex) === -1) {
+            generatedBioIndices.push(randomIndex);
+        }
+    }
+
+    let generatedConjunctionIndices = [];
+    while (generatedConjunctionIndices.length < 2) {
+        randomIndex = Math.floor(conjunctions.size * seed(Math.random()));
+        if (generatedConjunctionIndices.indexOf(randomIndex) === -1) {
+            generatedConjunctionIndices.push(randomIndex);
+        }
+    }
+
     let generatedBio = '';
-    generatedBio += bio.get(Math.floor(bio.size * seed(Math.random())));
-    generatedBio += conjunctions.get(Math.floor(conjunctions.size * seed(Math.random())));
-    generatedBio += bio.get(Math.floor(bio.size * seed(Math.random())));
-    generatedBio += conjunctions.get(Math.floor(conjunctions.size * seed(Math.random())));
-    generatedBio += bio.get(Math.floor(bio.size * seed(Math.random())));
+    generatedBio += bio.get(generatedBioIndices[0]);
+    generatedBio += conjunctions.get(generatedConjunctionIndices[0]);
+    generatedBio += bio.get(generatedBioIndices[1]);
+    generatedBio += conjunctions.get(generatedConjunctionIndices[1]);
+    generatedBio += bio.get(generatedBioIndices[2]);
 
     return generatedBio.charAt(0).toUpperCase() + generatedBio.slice(1);
 }

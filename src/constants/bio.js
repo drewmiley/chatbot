@@ -1,12 +1,16 @@
 import {List} from 'immutable';
 
-const bio = List.of('endless sentimentality',
+const bio = List.of('endless sentimentalist',
     'beastly unit tester',
-    'in need of a naked lunch',
+    'Cronenberg offcut',
     'pool aficionado',
     'pun-meister',
     'pointless anecdote regaler',
     'recovering mathematician',
-    'requires a welcome planet');
+    'requiring a welcome planet',
+    'mental sparrer',
+    'deluded intellectual',
+    'culinary experimentalist',
+    'frustrated creative');
 
 export default bio;
