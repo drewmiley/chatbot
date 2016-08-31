@@ -32,5 +32,5 @@ export default function RandomBioGenerator() {
     generatedBio += conjunctions.get(generatedConjunctionIndices[1]);
     generatedBio += bio.get(generatedBioIndices[2]);
 
-    return generatedBio.charAt(0).toUpperCase() + generatedBio.slice(1);
+    return generatedBio.charAt(0).toUpperCase() + generatedBio.slice(1) + '.';
 }
